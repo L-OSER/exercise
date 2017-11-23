@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+       <style type="text/css">
+        table{
+            margin: 20px auto;
+            border:1px solid #ccc;
+        }
+        td{
+            border:1px solid #ccc;
+
+        }
+        img{
+            width: 250px;
+        }
+       </style>
+    </head>
+    <body>
+        <input type="button" value="获取人物数据" id="getStars" />
+        <script type="text/javascript">
+         document.querySelector('#getStars').onclick= function(){
+            var ajax = new XMLHttpRequest();
+
+            ajax.open('post','getStars.php');
+
+            ajax.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+            ajax.send();
+
+            ajax.onreadystatechange = function(){
+                if (ajax.status ==200 && ajax.readyState ==4) {
+                     
+                     console.log(ajax.responseText);
+
+                     //不管是数组还是对象 都可以转为js对象
+                     var jsObj = JSON.parse(ajax.responseText);
+                     console.log(jsObj);
+
+                     var str = '<table>';
+
+                     for(var i = 0;i<jsObj.length;i++){
+
+                        str+='<tr>';
+                        str+='<td>'+jsObj[i].name+'</td>';
+                        str+='<td>'+jsObj[i].skill+'</td>';
+                        str+='<td><img src="'+jsObj[i].path+'" alt="" /></td>';
+                        str+='</tr>';
+
+                     }
+                     str += '</table>';
+                     document.body.innerHTML=str;
+
+                };
+            }
+         }
+        </script>
+    </body>
+</html>

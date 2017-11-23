@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <p></p>
+    <p></p>
+    <p></p>
+    <script type="text/javascript">
+
+    //使用函数将代码封装，使得复用性更高
+    //使用函数封装带来的问题：
+    //1.全局变量污染
+    //2.代码结构不够清晰，维护不方便
+    //
+     var divs = tag('div');
+     setStyle(divs)
+     // for(var i = 0;i<divs.length;i++){
+     //    divs[i].style.border = '1px solid #ccc';
+     //    divs[i].style.height = "50px";
+     // }
+     var ps = tag('p');
+     setStyle(ps)
+     //  for(var i = 0;i<divs.length;i++){
+     //    ps[i].style.border = '1px solid #ccc';
+     //    ps[i].style.height = "50px";
+     // }
+     function tag(tagName){
+        return document.querySelectorAll(tagName);
+     }
+     function setStyle(elements){
+     for(var i = 0;i<elements.length;i++){
+        elements[i].style.border = '1px solid #ccc';
+        elements[i].style.height = "50px";
+     }
+     }
+
+    </script>
+    </body>
+</html>

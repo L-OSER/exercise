@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+   
+    <input type="button" id="get_Ajax" value="GET调用ajax" />
+    <input type="button" id="post_Ajax" value="POST调用ajax" />
+    <input type="button" id="Ajax" value="调用ajax" />
+    <input type="button" id="ajaxTool" value="测试工具函数" />
+    <script type="text/javascript" src="ajax_tool.js"></script>
+    <script type="text/javascript">
+     document.querySelector('#get_Ajax').onclick = function(){
+       var get = ajax_get('get.php','name=get');
+
+     }
+     document.querySelector('#post_Ajax').onclick = function(){
+       var post = ajax_post('post.php','name=post');
+
+     }
+     document.querySelector('#Ajax').onclick = function(){
+      ajax_tool('post.php','name=ajax','post',function(data){
+        console.log(data);
+      });
+
+     }
+     document.querySelector('#ajaxTool').onclick = function(){
+            
+            ajax_tool_pro({
+                url:"get.php",
+                data:"name=ajax",
+                method:"get",
+                success:function(data){
+        console.log(data);
+
+                }
+            });
+
+     }
+    
+    </script>
+    </body>
+</html>

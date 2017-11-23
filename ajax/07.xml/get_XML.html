@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+    </head>
+    <body>
+    <input type="button" id="starBtn" value="按钮" />
+     <script type="text/javascript">
+      document.querySelector('#starBtn').onclick = function(){
+        var ajax = new XMLHttpRequest();
+
+        ajax.open('get','get_XML.php');
+
+        ajax.send();
+
+        ajax.onreadystatechange = function(){
+            if (ajax.readyState ==4 && ajax.status ==200) {
+
+               console.log(ajax.responseText);
+               //异步对象中 有了一个属性专门获取 xml
+               //xml对象 在浏览器端 就是一个 documet对象
+               //解析时 可以直接使用querySelector等等对象语法
+               console.log(ajax.responseXML);
+               console.log(ajax.responseXML.querySelector('name').innerHTML);
+               
+               //
+            };
+        }
+      }
+     </script>
+    </body>
+</html>

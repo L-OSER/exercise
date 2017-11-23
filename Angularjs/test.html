@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/javascript" src="libs/angular.min.js"></script>
+     <div ng-app="App">
+     <div ng-controller="Demo">
+         <h1>{{name}}在{{difang}}学习angularjs</h1>
+         <ul>
+             <li ng-repeat="x in suzu">第一天:{{x}}</li>
+             <li ng-repeat="(k, zz) in suzu">第{{k+1}}天:{{zz}}</li>
+         </ul>
+     </div>
+     </div>
+    <script type="text/javascript">
+     var App = angular.module('App',[]);
+
+     App.controller("Demo",['$scope',function($scope){
+        $scope.name = "zhou jj";
+        $scope.difang = "学校";
+
+        $scope.suzu =[
+         'mvc',
+         'abc',
+         '123'
+        ]
+
+     }]);
+    </script>
+    </body>
+</html>

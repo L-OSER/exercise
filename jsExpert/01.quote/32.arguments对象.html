@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/javascript">
+    //函数内部的一个对象 arguments
+    //这个对象会将所有传入的实参，一次存入
+    
+    function max(){
+        // console.log(arguments);
+        var maxNum = arguments[0];
+        for (var i = 1; i < arguments.length; i++) {
+            maxNum = maxNum> arguments[i] ? maxNum : arguments[i]
+        };
+        return maxNum;
+    }
+
+   
+        console.log( max(1,5,1112,124));
+
+        function arr(){
+            var newArr = [];
+
+            
+            for (var i = 0; i < arguments.length; i++) {
+                var bool = true;
+                for (var j = 0; j < arguments.length; j++) {
+                    if (arguments[i] == arguments[j] && i!==j) {
+                   bool =false;
+                    }
+                  
+                };
+                  if (bool) {
+                    newArr.push(arguments[i])
+                    };
+            };
+            return newArr;
+        }
+
+        console.log( arr(1,5,1,124,123,12,32,123));
+
+
+        function distinct(){
+            var arr = [];
+            for (var i = 0; i < arguments.length; i++) {
+                if (arr.indexOf(arguments[i]) ==-1) {
+                    arr.push(arguments[i])
+                };
+            };
+            return arr;
+        }
+        console.log( distinct(1c,5,1,124,123,12,32,123));
+    </script>
+    </body>
+</html>

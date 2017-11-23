@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/javascript">
+    try{
+         a();
+        //可能出现问题的代码
+        // 无法捕获 语法异常
+        throw "你的代码坏了";
+    }
+    catch(e){
+        console.log(e)
+        // 出现异常后的处理代码
+    }
+    finally{
+        console.log("我是finally的代码")
+        //不管出不出现错误，这里的代码都会执行
+        //node.js
+        //做释放资源的操作
+    }
+    function fun(num,num1){
+        if(num1==undefined || num1==undefined){
+            throw {
+                errMsg:"能不能好好玩耍",
+                errCode : 1
+            }
+        }else{
+            return num1+num2
+        }
+    }
+    try{
+         fun(0);
+    }
+    catch(e){
+        console.log(e.errMsg)
+    }
+
+    </script>
+    </body>
+</html>

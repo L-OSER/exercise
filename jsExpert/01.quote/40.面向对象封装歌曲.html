@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        // var songList = [
+        //     {
+        //         songName:"情书",
+        //         singer:"张学友"
+        //     },
+        //     {
+        //         songName:"演员",
+        //         singer:"薛小谦"
+        //     },
+        //     {
+        //         songName:"李白",
+        //         singer:"李荣浩"
+        //     }
+
+        // ];
+
+        //增删该查
+        function SongManager(){
+             this.songList=null;
+        }
+
+        SongManager.prototype = {
+
+            init:function(songList){
+             this.songList=songList;
+
+            },
+           addSong: function (song){
+           this.songList.push(song);
+       },
+       //删
+        //在当前对象的方法中，调用当前对象的方法要用this
+       removeSong: function (songName){
+            var song = this.selectSong(songName);
+            if(song ==null){
+                throw "你删除的歌曲不存在";
+            }
+            var index = this.songList.indexOf(song);
+            if(index> -1){
+             return this.songList.splice(index, 1);
+
+            }
+            return null
+ 
+        },
+        //改
+       updateSong:function (songName, singer) {
+
+            var song = this.selectSong(songName);
+            if(song ==null){
+                throw "你修改的歌曲不存在";
+            }
+            song.singer = singer;
+
+        },
+        //查
+       selectSong: function (songName) {
+            for (var k = 0; k < this.songList.length; k++) {
+                var song = this.songList[k];
+                if(song.songName == songName){
+                    return song;
+                }
+            }
+            return null;
+        }
+
+        }
+
+        var manager = new SongManager();
+        manager.init([{
+                songName:"情书",
+                singer:"张学友"
+            },
+            {
+                songName:"演员",
+                singer:"薛小谦"
+            },
+            {
+                songName:"李白",
+                singer:"李荣浩"
+            }]);
+        manager.addSong({
+            songName:"东风破",
+            singer:"周杰伦"
+        })
+ 
+        console.log(manager.songList)
+
+        var zjjdemanager = new SongManager();
+         zjjdemanager.init([]);
+         
+             zjjdemanager.addSong({
+            songName:"撒我迪卡",
+            singer:"不要来"
+        })
+
+        console.log(zjjdemanager.songList)
+       
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script type="text/javascript">
+      function Person(name,age,brand,car){
+           this.name = name;
+           this.age = age;
+           this.brand = brand;
+           this.car = car;
+      }
+
+      var x = {
+         brand:"劳斯莱斯"
+      }
+
+      // Person.prototype.car = x;
+
+      var p = new Person('张学友','18','male',x);
+      var p1 = new p.constructor('张学友1','11','male',x);//相当于直接使用 new Person();
+
+      
+
+      // 
+      //指向对应的构造函数
+
+
+
+      console.log(p1)
+    </script>
+    </body>
+</html>

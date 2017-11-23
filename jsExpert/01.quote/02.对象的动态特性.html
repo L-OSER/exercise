@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/javascript">
+     var obj = {
+        name :"刘德华",
+        age:50
+     }
+     //对象的动态特性
+     //对象的动态特性是指，在对象创建出来之后，为对象添加新的属性或者方法
+     obj.gender = "male";
+
+     obj.sayHello = function(){
+        console.log("我想死你了");
+     }
+
+     obj.sayHello();
+
+     obj['car'] = {
+        brand : "Ferrari"
+     }
+     console.log(obj)
+    </script>
+    </body>
+</html>

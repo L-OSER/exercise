@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <div>1div
+        <p>1p
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </p>
+        <p>1p
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </p>
+        <p>1p
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </p>
+        <p>1p
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </p>
+    </div>
+    <div>1div
+        <p>1p
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </p>
+        <p>1p
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </p>
+        <p>1p
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </p>
+        <p>1p
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </p>
+    </div>
+    <div>1div
+        <p>1p
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </p>
+        <p>1p
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </p>
+        <p>1p
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </p>
+        <p>1p
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </p>
+    </div>
+    <script type="text/javascript">
+//先找body的所有子元素
+//再找body的子元素的所有子元素
+
+    function getChildNode(node){
+        //先找子元素
+        var result = [];
+          var nodeList =node.childNodes;
+          //再用子元素再找子元素，这里就可以递归了
+        for (var i = 0; i < nodeList.length; i++) {
+            //childNode获取到的节点包含了各种类型的节点
+            //可以用nodeType判断是否是元素节点，返回1是元素节点
+            var childNode=nodeList[i];
+            if (childNode.nodeType==1) {
+                result.push(childNode);
+               var temp =  getChildNode(childNode);
+               result = result.concat(temp)
+            };
+        };
+
+        return result;
+
+    }
+   var arr = getChildNode(document.body)
+
+            //1.第一次调用时获取body的所有子元素,会把所有的子元素全部放到result里面
+
+            //2.每放进去一个 就找这个子元素的所有子元素  有返回值
+
+            //3.把这个返回值和我们存当前子元素的数组拼接起来 就变成了 子元素 和 孙子元素的集合
+
+    for (var i = 0; i < arr.length; i++) {
+                arr[i].style.border="1px solid pink";
+    };
+    </script>
+    </body>
+</html>

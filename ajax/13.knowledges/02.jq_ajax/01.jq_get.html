@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <h1>测试GET方法</h1>
+    <input type="button" id="get" value="get获取数据" />
+    <script type="text/javascript" src="../../js/jquery.min.js"></script>
+    <script type="text/javascript">
+       $('#get').click(function(event) {
+        //使用$.get发送ajax
+        /*
+            参数1:url
+            参数2:回调函数
+            参数3:发送的数据 支持 直接写js对象的方式
+            参数4:从服务端获取的 数据类型 可以不写，如果写为json jq内部
+            会帮我们进行一个 JSON.parse()转化
+            注意
+                  如果type为json
+                      并且服务端返回的就是json格式字符串
+                      jq内部 会帮助我们自动转化
+                      在回调函数中 获取 的实参 就是转化完成的 js对象
+                      直接使用即可
+
+               
+         */
+           $.get('01.jq_get.php',{name:'jack',age:'18'}, function(data) {
+               console.log(data);
+           },'json');
+       });
+    </script>
+    </body>
+</html>

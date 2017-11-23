@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <h1>获取JSON的数据</h1>
+    <input type="button" value="获取json" id="jsonBtn" />
+
+    <script type="text/javascript">
+      document.querySelector('#jsonBtn').onclick = function(){
+        var ajax= new XMLHttpRequest();
+
+        ajax.open('get','getJson.php');
+
+        ajax.send()
+
+        ajax.onreadystatechange = function(){
+            if (ajax.readyState ==4 && ajax.status ==200) {
+                   console.log(ajax.responseText);
+
+                   var jsObj = JSON.parse(ajax.responseText);
+                   console.log(jsObj);
+
+                   var str = '';
+                   str+= '<ul>';
+                   str+= '<li>'+jsObj.name+'</li>';
+                   str+= '<li>'+jsObj.skill+'</li>';
+                   str+= '<li>'+jsObj.friend+'</li>';
+                   str+= '</ul>';
+                   document.write(str);
+            }
+        }
+      }
+    </script>
+    </body>
+</html>

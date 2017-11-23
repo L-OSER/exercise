@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<start>
+    <parent>
+        <name>漩涡鸣人</name>
+        <image>img/mr.jpg</image>
+        <skill>嘴遁</skill>
+    </parent>
+    <parent>
+        <name>小樱</name>
+        <image>img/xy.jpg</image>
+        <skill>可恶</skill>
+    </parent>
+    <parent>
+        <name>宇智波佐助</name>
+        <image>img/zz.gif</image>
+        <skill>拿了多</skill>
+    </parent>
+    <parent>
+        <name>小李</name>
+        <image>img/xl.jpg</image>
+        <skill>热血</skill>
+    </parent>
+</start>

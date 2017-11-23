@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+     <script type="text/javascript">
+       //对象是无序的键值对的集合
+       function Animal(name,type,barkWay){
+        this.name = name;
+        this.type = type;
+        this.bark = barkWay;//加了括号变成调用函数
+       }
+
+      //注意：如果像使用正常的函数一样使用构造函数
+      //构造函数中的this将不再指向新创建出来的对象(因为根本没有创建对象)
+      //构造函数中的this这个时候指向的就是window全局对象
+      //当使用this给对象添加成员的时候，全部都添加到了window上
+      // Animal("","",function(){
+      //   console.log("我是函数")
+      // }); 这是一个错误的演示
+      // 
+      // window.bark();
+
+
+
+
+       var dog = new Animal("大黄","Big Yellow Dog",function(){
+           console.log("汪汪汪")
+       });
+
+       dog.bark();
+       console.log(dog);
+
+
+
+       var cat = new Animal("饭团","布偶猫",function(){
+           console.log("喵喵喵");
+       });
+       cat.bark();
+
+       //js中提供了两个方法来调用其他对象的方法
+       //call
+       //apply
+       
+       //获取具体类型方式
+       //var typeStr = Object.prototype.toString.call(想要获取类型的对象)
+       //[object Array]
+       //typeStr = typeStr.slice(8,-1)
+       
+
+       var a = {};//构造函数是Object
+       var b = [];//构造函数是Array
+     </script>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <h1>发送post请求的ajax</h1>
+    <input type="text" name="" id="nameText" />
+    <input type="button" value="发送post_ajax请求" id="btnAjax" />
+    </body>
+    <script type="text/javascript">
+    document.querySelector('#btnAjax').onclick = function (){
+
+     var ajaxObj = new XMLHttpRequest();
+
+     var userName = document.querySelector('#nameText').value;
+
+     ajaxObj.open('post','03.ajax.php');
+    
+    //如果要用post发送数据 必须设置 如下内容
+    //修改了 发送给服务器 请求报文的 内容
+    ajaxObj.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    //post请求 发送的数据 写在send方法中
+    //格式 name=jack&age=18 字符串的形式
+     ajaxObj.send('name=jack&age=18');
+
+     ajaxObj.onreadystatechange = function(){
+        if (ajaxObj.readyState==4 && ajaxObj.status==200) {
+              console.log(ajaxObj.responseText);
+        };
+     }
+
+
+    }
+    </script>
+</html>

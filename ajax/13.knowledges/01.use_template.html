@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/template" id='template'>
+    <ul>
+        <li><%=name%></li>
+        <li><%=skill%></li>
+        <li>
+         <ul>
+    <%for(var i=0; i<friend.length;i++){%>
+        <li><%=friend[i]%></li>
+    <%}%>
+
+         </ul>
+        </li>
+        <li>
+         <ul>
+    <%for(var i=0; i<brother.length;i++){%>
+        <li>名字：<%=brother[i].name%></li>
+        <li>技能：<%=brother[i].skill%></li>
+        <li>价钱：<%=brother[i].price%></li>
+    <%}%>
+
+         </ul>
+         </li>
+    </ul>
+    </script>
+    <script type="text/javascript" src="../js/ajax_tool.js"></script>
+    <script type="text/javascript" src="../js/template-native.js"></script>
+    <script type="text/javascript">
+      var obj = {
+        name:"路飞",
+        skill:'橡胶机关枪',
+        friend:['葫芦娃','黑猫警长','喜羊羊'],
+        brother:[
+      {
+       name:'乔巴',
+       skill:'治病',
+       price:'50RMB'
+      },
+      {
+       name:'娜美',
+       skill:'小偷',
+       price:'7000万'
+      }
+        ]
+      }
+     var str = template('template',obj);
+     document.querySelector('body').innerHTML = str;
+    </script>
+    </body>
+</html>

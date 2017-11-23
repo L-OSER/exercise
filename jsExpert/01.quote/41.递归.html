@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+     <script type="text/javascript">
+     //递归
+     //在函数内调用自己,就是递归
+     //没有递归结束条件的递归，就是死递归
+     
+     //1.自己调用自己
+     //2.要有结束的条件
+     
+     //使用递归的方法
+     //化归思想
+     //化归思想，将一个问题由难化易，由繁化简，由复杂化简单的过程称为化归，它是转化和归结的简称。
+    
+  //1到n的和
+    function sum(n){
+
+        if (n == 1) {
+            return 1;
+        };
+
+        return sum(n-1) + n;
+
+    }
+    console.log(sum(3))
+     </script>
+    </body>
+</html>

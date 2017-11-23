@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/javascript">
+     // 如何创建一个对象
+     // 1.对象字面量 {key:value,key:value}
+     // 只能创建一次对象，复用性较差，如果要创建多个对象，代码冗余度太高 
+      // var obj = {
+      //     skill : '技能',
+      //     name : "果子"
+      // };    
+
+      //2.使用构造函数
+      // var obj = new Object();
+      // obj.name = "饥荒";
+      // obj.singer = "饥饿";
+      // obj.sing = function(){
+      //    console.log("饥饿的饥荒")
+      // }
+
+      //3.封装简单的工厂函数(不推荐使用了)
+       function createSong(songName,singerName){
+          var ob = new Object();
+      ob.name = songName;
+      ob.singer = singerName;
+      ob.sing = function(){
+         console.log("饥饿的饥荒")
+      }
+          return ob; //{name:'',singer:''}
+       }
+       var obj = createSong('饥饿','饥荒');
+       var obj1 = createSong('逃跑','跑路');
+       console.log(obj)
+    </script>
+    </body>
+</html>

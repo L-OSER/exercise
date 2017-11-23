@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/javascript">
+     //1.给原型对象中添加成员(通过对象的动态特性) 不是严格意义上的继承
+     // function Person(name,age){
+     //    this.name = name;
+     //    this.age = age;
+     // }
+
+     // Person.prototype.sayHello = function(){
+     //    console.log("哈喽")
+     // }
+
+     // var p = new Person("名字",50)
+
+     // p.sayHello()
+
+     //这里的p对象就是自己成原型对象
+     
+     //2.直接替换原型对象
+     
+/*         function Person(name,age){
+        this.name = name;
+        this.age = age;
+     }
+
+    var parent = {
+        sayHello : function(){
+        console.log("我想死你了 ")
+        }
+    }
+
+    Person.prototype = parent;
+
+     var p = new Person("名字",50)
+
+     p.sayHello()*/
+
+     //p对象继承了原型对象(parent)
+     //注意：使用替换原型的方式实现继承的时候，原有原型中的成员就会丢失
+
+     //3.利用混入的方式给原型对象添加成员
+     function Person(name,age){
+        this.name = name;
+        this.age = age;
+     }
+
+     var parent = {
+        sayHello : function(){
+           console.log("我想死你了 ")
+        }
+    }
+
+    for(var k in parent){
+         Person.prototype[k] = parent[k];
+    }
+
+
+
+     var p = new Person("名字",50)
+     p.sayHello()
+     
+    </script>
+    </body>
+</html>

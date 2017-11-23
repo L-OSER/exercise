@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/javascript">
+    // 继承是指一个对象没有一些方法和属性，但是另外一个对象有，
+    // 把另外一个对象的属性和方法，拿过来用
+     var  obj = {
+
+     }
+     var obj1 = {
+        name :"猴赛雷",
+        age : 18,
+        sayHello : function(){
+            console.log('hello word');
+        }
+     }
+     for(var i in obj1){
+        // i 可以获取到对象的每一个属性
+        // obj1[i]可以获取到对象的每一个的值
+        // 这里使用i给对象新增属性的时候，不可以使用点语法
+        obj[i]= obj1[i];
+     }
+     console.log(obj)
+     //多态
+     //多态是指在强类型语言中比较常用，JavaScript没有相应的体现
+     //
+    </script>
+    </body>
+</html>

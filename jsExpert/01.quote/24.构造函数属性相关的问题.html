@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/javascript">
+       function Person(){
+
+       }
+
+       // Person.prototype.cat =function(){
+       //  console.log(123)
+       // } 
+
+
+       // var p =new Person();
+       
+       console.log(Person.prototype.constructor)
+
+       // Person.prototype = {
+        
+       // };
+       Person.prototype = {
+        constructor : Person
+       };
+
+       console.log(Person.prototype.constructor)
+
+       //在使用新的对象替换掉默认的原型对象之后
+       //原型对象的constructor属性会变成 Object
+       //为了保证整个 构造函数--原型--对象 之间的关系的合理性
+       //应做如下操作：
+       //在替换原型对象的时候，在新的原型对象中手动 添加 constructor 属性
+    </script>
+    </body>
+</html>

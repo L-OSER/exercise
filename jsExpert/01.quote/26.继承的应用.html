@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/javascript">
+     var arr = [1,2,3];
+
+     Array.prototype.sayHello = function(){
+        console.log("我是一个数组");
+     }
+     arr.sayHello();
+    
+     //扩展内置对象(就是给内置对象新增成员)
+    
+
+
+     //如何安全的扩展一个内置对象
+    function MyArray(){
+ 
+    }
+
+    var arr = new Array();
+
+     MyArray.prototype = arr;
+
+    var myarr = new MyArray();
+
+    myarr.push(1);
+    myarr.push(2,3,4);
+    </script>
+    
+    </body>
+</html>

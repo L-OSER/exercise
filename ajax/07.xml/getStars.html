@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+         table{
+            border:1px solid #ccc;
+            margin: 200px auto;
+         }
+         img{
+            width: 200px;
+         }
+         td{
+            border:1px solid #ccc;
+
+         }
+        </style>
+    </head>
+    <body>
+    <h1>ajax获取 多个明星数据</h1>
+    <input type="button" id="ajaxBtn" value="获取数据" />
+
+    <script type="text/javascript">
+
+        document.querySelector('#ajaxBtn').onclick = function(){
+
+            var ajax = new XMLHttpRequest();
+
+            ajax.open('post','getStars.php');
+
+            ajax.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+            ajax.send();
+
+            ajax.onreadystatechange = function(){
+                if (ajax.readyState ==4 && ajax.status ==200) {
+                    //返回的是 xml
+                    console.log(ajax.responseXML);
+
+                    var parent = ajax.responseXML.querySelectorAll('parent');
+                    console.log(parent);
+
+                        var str ='<table>';
+                    //循环获取当中的每一个
+                    for (var i = 0; i <parent.length; i++) {
+                        
+                        var currParent = parent[i];
+
+                        console.log(currParent.querySelector('name').innerHTML);
+                        console.log(currParent.querySelector('image').innerHTML);
+                        console.log(currParent.querySelector('skill').innerHTML);
+
+
+                            str+='<tr>';
+                            str+='<td>'+currParent.querySelector('name').innerHTML+'</td>';
+                            str+='<td><img src="'+currParent.querySelector('image').innerHTML+'" alt="" /></td>';
+                            str+='<td>'+currParent.querySelector('skill').innerHTML+'</td>';
+                            str+='<td><a href="#">点击了解更多 '+currParent.querySelector('name').innerHTML+'</a></td>';
+                            str+='</tr>';
+
+                    };
+                            str+='</table>';
+                            document.body.innerHTML=str;
+
+                };
+            }
+        }
+    </script>
+    </body>
+</html>

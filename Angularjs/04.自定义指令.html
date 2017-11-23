@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <title>自定义AangularJs指令</title>
+         <style type="text/css">
+        .lei{
+         background-color: pink;
+         height: 20px;
+        }
+
+         </style>
+    </head>
+   
+    <body ng-app="App">
+
+    <div tag>
+        
+    </div>
+
+
+
+    <script type="text/javascript" src="libs/angular.min.js"></script>
+    <script type="text/javascript">
+     var App = angular.module('App',[]);
+      
+      //通过模块实例对象的directive方法可以自定义指令
+     App.directive("tag",function(){
+        
+        //返回一个对象，这个对象就是自定义指令相关的内容
+       return{
+        // E    元素  <my-dir></my-dir>
+        // C    样式类 <span class="my-dir:exp;"></span>
+        // A    属性  <span my-dir="exp"></span>
+        // M    注释  <!-- directive: my-dir:exp-->
+          restrict: 'EA',
+          template:'<h1>hell angular</h1>',
+          replace:true
+          // templateUrl:'../插入文件地址'
+       }
+     });
+    </script>
+    </body>
+</html>

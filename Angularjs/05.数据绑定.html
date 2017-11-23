@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <title>数据绑定</title>
+         <style type="text/css">
+        .lei{
+         background-color: pink;
+         height: 20px;
+        }
+
+         </style>
+    </head>
+   
+    <body ng-app="App">
+
+    <ul ng-controller="DemoCtrl">
+        <li ng-bind="name"></li>
+        <li ng-cloak>{{age}}</li>
+        <li ng-bind-template="{{age}}{{name}}" ></li>
+        <!-- 方法和JQ类似 -->
+        <li> <button ng-click="single()">单击</button></li>
+        <li> <button ng-dblclick="doule()">双击</button></li>
+        <li> <input type="text" ng-blur="blur()" /></li>
+        <li> <input type="text" ng-focus="focus()" /></li>
+    </ul>
+<div ng-controller="DemoCtrl" ng-init="skill='阿布才';loc='在这里定义相当于在函数控制器里定义'">
+  <!-- 要实现数据从视图向模型传递需要借助于表单元素 -->
+  <input type="text" ng-model="msg" />
+  <h1>{{msg}}</h1>
+  <h1>{{skill}}</h1>
+  <h1>{{loc}}</h1>
+  <button ng-click="show()">按钮</button>
+
+<!-- ng-repeat遍历数组 -->
+  <ul>
+      <li ng-repeat="(key , star) in stars">{{star.name}}{{star.age}}</li>
+  </ul>
+
+<ul>
+    <li ng-repeat="item in items" ng-switch on="item">
+        <span ng-switch-when="css">{{item}}</span>
+        <!-- 如果数据是css就传进来 -->
+    </li>
+</ul>
+</div>
+
+    <script type="text/javascript" src="libs/angular.min.js"></script>
+    <script type="text/javascript">
+     var App = angular.module('App',[]);
+      
+      App.controller("DemoCtrl",['$scope',function($scope){
+
+
+         $scope.show=function(){
+
+            alert($scope.msg)
+
+         }
+         $scope.single=function(){
+
+            alert('我被单击了')
+
+         }
+         $scope.doule=function(){
+
+            alert('我被双击了')
+
+         }
+         $scope.focus=function(){
+
+            alert('我获得焦点了');
+            return false;
+
+         }
+           $scope.stars = [
+             {name: '刘德华', age: 60},
+             {name: '周杰伦', age: 38},
+             {name: '王力宏', age: 39}
+
+            ];
+
+        $scope.items = ['html', 'css', 'js'];
+        $scope.name ="itcast";
+        $scope.age =22;
+      }])
+    </script>
+    </body>
+</html>

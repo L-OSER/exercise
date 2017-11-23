@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/javascript">
+      function createCache(){
+        var cache = {};
+        return function (key,value){
+          if(value!==undefined){
+            cache[key] = value;
+            return cache;
+          }else{
+            //如果没传值，只传了键值那就是获取值
+            return cache[key];
+          }
+
+        }
+      }
+
+      var eleCache = createCache();
+      eleCache("name","你好");
+      console.log(eleCache("name"))
+    </script>
+    </body>
+</html>

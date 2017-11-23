@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+
+    <script type="text/javascript">
+    // 优化 正则 为一个通用的正则 
+    // 查找 至少一个字母
+    var reg  = /\w+/;
+
+    // 挖好坑的 字符串
+    var str = '我是一匹来自北方的name,我爱吃的食物是food,我的爱好是habit';
+
+    // 准备一个对象 用来填坑
+    var obj ={
+        name:"秋田",
+        food:"柯基",
+        habit:"电臀"
+    };
+
+    var result;
+    // 循环替换，直到匹配不到reg的条件，返回未定义，退出循环
+    while( result=reg.exec(str)){
+
+        var key = result[0];
+
+        var vaule = obj[key];
+
+     str = str.replace(key,vaule);
+
+     console.log(str);
+    }
+    
+</script>
+    </body>
+</html>

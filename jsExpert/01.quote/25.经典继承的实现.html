@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/javascript">
+     //《JavaScript 语言精粹》 作者提出一个了方式来实现继承
+     function jicheng(obj){
+        var o ={};
+        o.__proto__ = obj;
+        return o;
+     }
+ 
+     var o = jicheng({name:"张三"});
+     console.log(o)
+    
+
+    //经典继承的语法
+    //Object.create(obj);
+    //返回值为一个对象，继承自参数中的obj
+    //这个方法是ES5中出来的，所有存在兼容性问题
+    
+/*    var o = {
+        name:"周四"
+    };
+
+    var obj = Object.create(o);
+
+     console.log(obj.name);*/
+
+     //如何处理Object.create的兼容性问题
+     
+     var ob = {
+        name:"周五"
+    };
+    //检测浏览器的能力，如果没有Object.create方法就给他添加一个(不推荐使用)
+     if (Object.create) {
+        var o = Object.create(obj);
+     }else{
+        Object.create =function(obj){
+        function F(){
+
+        }
+        F.prototype = obj;
+        return new F();
+        }
+        var o =Object.create(ob);
+     };
+     console.log(o.name);
+
+  //自己定义个函数
+   function create(obj){
+    
+    if (Object.create) {
+        return Object.create(obj);
+     }else{
+         function F(){
+
+        }
+        F.prototype = obj;
+        return new F();
+
+   }
+   }
+    </script>
+    </body>
+</html>

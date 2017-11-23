@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/javascript">
+       var obj = {
+        name:"张学友",
+        age:18
+       }
+    for(var k in obj){
+        console.log(k)
+    }
+    function fun(param){
+         param.name = '死肥宅';
+         param = {
+            name:"funv"
+         }
+         param.name = "腐女";
+         console.log(param.name)
+    }
+    
+    fun(obj)
+    //引用类型做函数的参数
+//还是把实参存储的地址复制给了形参，在函数内部，形参同样也指向该对象，
+//所以，在函数内部对该对象进行修改，会影响到外面的变量
+
+//注意：如果在函数内部重新创建对象，为该形参赋值，那么两个对象将不再有关系
+//修改其中一个，另外一个不受影响 
+    console.log(obj.name)
+    </script>
+    </body>
+</html>

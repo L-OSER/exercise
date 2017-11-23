@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            .imgbox{
+                width: 200px;
+                height: 200px;
+                border:1px solid #ccc;
+                margin: 20px auto;
+            }
+            .infobox{
+
+                border:1px solid #ccc;
+                margin: 20px auto;
+                width: 300px;
+                height: 100px;
+            }
+            body{
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+    <h1>发送post请求的ajax</h1>
+    <div class="imgbox"></div>
+    <div class="infobox"></div>
+    <input type="button" class="starBtn" value="mr" />
+    <input type="button" class="starBtn" value="zz" />
+    <input type="button" class="starBtn" value="xy" />
+   
+    </body>
+    <script type="text/javascript">
+     var btnList = document.querySelectorAll('.starBtn');
+     for (var i = 0; i<btnList.length ; i++){
+        btnList[i].onclick = function(){
+            var ajax = new XMLHttpRequest();
+
+            ajax.open('post','img.php');
+
+            ajax.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+            ajax.send('name='+this.value);
+
+            ajax.onreadystatechange = function(){
+                if (ajax.readyState == 4 && ajax.status == 200) {
+                        //split 截取字符串分割为数组
+                    var strArr = ajax.responseText.split('|');
+
+                    document.querySelector('.imgbox').style.background = 'url('+strArr[0]+') center no-repeat';
+
+                    document.querySelector('.infobox').innerHTML = strArr[1];
+                };
+            }
+        }
+
+     }
+    </script>
+</html>

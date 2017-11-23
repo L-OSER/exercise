@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/javascript">
+    function studyMoted(){
+        console.log(this.name+'good')
+    }
+      function Student(name,age){
+         this.name=name;
+         this.age=age;
+         this.study = studyMoted;
+           
+      }
+      var xuesheng = new Student('小学生');
+     xuesheng.study()
+      var xuesheng1 = new Student('中学生');
+     xuesheng1.study()
+     
+     //如果在构造函数中定义函数，那么每次创建对象，都会重新创建该函数
+     //但是函数内部代码完全相同，就造成了资源浪费
+     //为了解决这个问题，我们让所有的对象公用一个方法
+   
+      //this 在这里指调用就指向谁
+   </script>
+    </body>
+</html>

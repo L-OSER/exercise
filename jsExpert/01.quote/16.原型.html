@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/javascript">
+     function Person(name,age){
+        this.name = name;
+        this.age = age;
+        this.act = function(){
+            console.log("熊孩子")
+        }
+     }
+     
+     var p = new Person("小学生",18);
+     var p1 = new Person("中学生",28);
+     //原型
+     //在构造函数创建出来的时候，系统会默认的帮构造函数创建并关联一个对象。这个对象就是原型
+     //原型默认的是一个空的对象
+     
+     
+     //原型的作用
+     //原型中的属性和方法
+     //可以被使用该构造函数创建出来的对象使用
+   
+     //如何访问构造函数的原型
+     // 构造函数.prototype
+    
+    console.log(Person.prototype);
+
+    //如何给原型对象添加属性和方法
+    //使用对象的动态特性
+    
+    Person.prototype.exercise = function(){
+        console.log("强身健体");
+    }
+    p.exercise();
+    p1.exercise();
+    //当使用对象去访问属性和方法的时候
+    //会首先在对象自己内部进行查找，如果找到了，就直接使用
+    //如果没有，就去原型中查找，查找到之后，使用
+    //如果原型中没有，如果是属性，就是undefined
+    //如果是方法，就报错
+    </script>
+    </body>
+</html>

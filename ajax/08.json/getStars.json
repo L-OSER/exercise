@@ -1,0 +1,22 @@
+[
+  {
+    "name":"漩涡鸣人",
+    "skill":"money",
+    "path":"image/mr.jpg"
+  },
+  {
+    "name":"宇智波佐助",
+    "skill":"laugh",
+    "path":"image/zz.gif"
+  },
+  {
+    "name":"小樱",
+    "skill":"可恶",
+    "path":"image/xy.jpg"
+  },
+  {
+    "name":"小李",
+    "skill":"热血",
+    "path":"image/xl.jpg"
+  }
+]

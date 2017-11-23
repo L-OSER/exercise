@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <title>AangularJs指令</title>
+         <style type="text/css">
+        .lei{
+         background-color: pink;
+         height: 20px;
+        }
+
+         </style>
+    </head>
+   
+    <body ng-app="App">
+
+    <ul ng-controller="DemoCtrl">
+        <li ng-bind="name"></li>
+        <li>{{name}}</li>
+        <li ng-show="true">控制元素是否显示，true显示、false不显示</li>
+        <li>
+            <img ng-src="{{path}}" alt="123" />
+        </li>
+        <li ng-class="lei"></li>
+    </ul>
+
+    <script type="text/javascript" src="libs/angular.min.js"></script>
+    <script type="text/javascript">
+     var App = angular.module('App',[]);
+
+     App.controller("DemoCtrl",['$scope',function($scope){
+        
+        $scope.name="123";
+        $scope.lei="lei";
+        $scope.path = "images/author.jpg"
+
+     }]);
+    </script>
+    </body>
+</html>
