@@ -7,6 +7,7 @@
     <ul ng-controller="DemoContoller">
         <li>{{name|demo}}</li>
         <li>{{name|capitalize:2}}</li>
+        <li>{{ttt}}</li>
     </ul>
     <script type="text/javascript" src="libs/angular.min.js"></script>
     <script type="text/javascript">
@@ -44,6 +45,7 @@
        App.controller("DemoContoller",['$scope',function($scope){
 
         $scope.name ="abcd";
+        $scope.ttt ="b";
 
        }]);
     </script>

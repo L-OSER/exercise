@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="App">
+    <head>
+        <meta  charset="utf-8">
+    </head>
+    <body>
+    <div ng-controller= "DemoContoller">
+    <h1>{{title[0]}}</h1>
+    <h3>absUrl: {{absUrl}}</h3>
+    <h3>url: {{url}}</h3>
+    <h3>host: {{host}}</h3>
+    <h3>search: {{search}}</h3>
+    <h3>hash: {{hash}}</h3>
+    <h3>port: {{port}}</h3>
+        
+    </div>
+    <script type="text/javascript" src="libs/angular.min.js"></script>
+    <script type="text/javascript">
+    var App = angular.module("App",[]);
+
+    App.controller("DemoContoller",['$scope','$location',function($scope,$location){
+     $scope.title=['学习$location服务'];
+
+       //$location就是angularJS提前封装好的
+       //提供获取地址相关信息的服务
+       //console.log($location);
+       $scope.absUrl = $location.absUrl(); 
+       $scope.url = $location.url(); 
+       $scope.host = $location.host(); 
+       $scope.search = $location.search(); 
+       $scope.hash = $location.hash(); 
+       $scope.port = $location.port(); 
+         
+        for(var key in location) {
+            console.log(key + '=>' + location[key]);
+        }
+
+        // 地址是有若干部分组合成的
+
+        // http:// 协议
+        // www.baidu.com / 124.12.134.12 主机
+        // :8080 端口号
+        // #abc  锚点
+        // ?name=itcast&age=10 查询参数据(querystring)
+    }]) ;
+    </script>
+
+
+    </body>
+</html> 

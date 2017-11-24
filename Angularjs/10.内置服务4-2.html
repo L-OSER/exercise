@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="App">
+<head>
+<style type="text/css">
+
+
+</style>
+  <meta charset="UTF-8">
+  <title>AngularJS 服务</title>
+</head>
+<body>
+<div>
+  
+</div>
+  <script ng-controller="DemoController">
+    
+    function fn(arg) {
+
+      console.log(arg);
+
+      document.write('111');
+
+    }
+  </script>
+  
+  <!-- <script src="json/jsonp.php?callback=fn"></script> -->
+  <script src="libs/jquery.min.js"></script>
+  <script src="libs/angular.min.js"></script>
+  <script>
+      // 1、JSONP 跟Ajax 没有关系
+    // 2、$.ajax({
+
+    // });
+
+    // 3、$.ajax({
+      // url: 'example.php',
+      // type: 'post',
+      // dataType: 'jsonp'
+    // })
+    //   // var script = createElement('script');
+    // script.src = url;
+    // var head = document.querySelector('head');
+    // head.appendChild(script);
+    // 
+
+    // $.ajax({
+    //  url: 'json/jsonp.php',
+    //  dataType: 'jsonp'
+    // });
+    var App = angular.module('App', []);
+
+    App.controller('DemoController', ['$http', '$scope', function ($http, $scope) {
+
+      $http({
+        url: 'json/jsonp.php?a=JSON_CALLBACK',
+        method: 'jsonp' // 采用JSONP方式
+      }).success(function (info) {
+        console.log(info);
+      });
+
+    }]);
+
+  </script>
+
+</body>
+</html>

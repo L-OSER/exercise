@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="App">
+<head>
+<style type="text/css">
+
+
+</style>
+  <meta charset="UTF-8">
+  <title>AngularJS 服务</title>
+</head>
+<body>
+  <div ng-controller="DemoController">
+    <button ng-click="getData()">获取数据</button>
+    <table>
+      <tr>
+        <td>姓名</td>
+        <td>年龄</td>
+        <td>性别</td>
+        <td>头像</td>
+        <td>专辑</td>
+      </tr>
+      <tr ng-repeat="star in stars">
+        <td>{{star.name}}</td>
+        <td>{{star.age}}</td>
+        <td>{{star.sex}}</td>
+        <td>{{star.photo}}</td>
+        <td>{{star.ablum}}</td>
+      </tr>
+    </table>
+  </div>
+  <script src="libs/angular.min.js"></script>
+  <script>
+  
+    var App = angular.module('App', []);
+
+    // $filter是过滤器
+    App.controller('DemoController', ['$http', '$scope','$log', function ($http, $scope,$log) {
+
+      
+      $scope.getData=function(){
+      $http({
+        url:'php/stars.php',
+        // method:'get',
+        method:'post',
+        headers:{
+          'Content-Type':'application/x-www-form-urlencoded'
+          // 'Content-Type':'application/json;charset=UTF-8'
+        }
+       
+      }).success(function(info){
+         //info 就是返回的的数据
+         $log.info(info);
+          $scope.stars = info;
+      });
+}
+ 
+
+    }]);
+
+  </script>
+
+</body>
+</html>
