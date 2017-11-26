@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='weather'>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <div ng-controller="DemoContoller">
+        <table>
+            <tr ng-repeat="weather in weatherDate">
+                <td>{{weather.date}}</td>
+                <td>{{weather.temperature}}</td>
+                <td>{{weather.weather}}</td>
+                <td><img ng-src="{{weather.dayPictureUrl}}" alt="" /></td>
+                <td><img ng-src="{{weather.nightPictureUrl}}" alt="" /></td>
+                <td>{{weather.wind}}</td>
+            </tr>
+        </table>
+        <div>
+            {{weatherDate[0].date}}
+        </div>
+    </div>
+    <script type="text/javascript" src="libs/angular.min.js"></script>
+    <script type="text/javascript">
+     var weather = angular.module('weather',[]);
+     weather.controller('DemoContoller',['$scope','$http',function($scope,$http){
+
+        $http({
+            method:"jsonp",
+            url:'http://api.map.baidu.com/telematics/v3/weather?callback=JSON_CALLBACK',
+            params:{
+                location:'北京',
+                output:'json',
+                ak:'0A5bc3c4fb543c8f9bc54b77bc155724'
+                // callback:'JSON_CALLBACK'
+            }
+         
+
+        }).success(function(info){
+            $scope.weatherDate = info.results[0].weather_data
+;
+            console.log($scope.weatherDate )
+
+        })
+
+     }])
+    </script>
+
+    </body>
+</html>
