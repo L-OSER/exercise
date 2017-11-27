@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    <title>AngularJS 自定义服务</title>
+    </head>
+<body ng-app="App">
+    <div ng-controller="DemoController">
+        <!--  -->
+         <h1>{{str|capitalize}}</h1>
+    </div>
+    <script type="text/javascript" src="libs/angular.min.js"></script>
+    <script type="text/javascript">
+     var App = angular.module('App',[]);
+   //config
+     //允许一次配置多个服务（块）
+     //传递的一个数组（依赖注入方式）
+     App.config(['$logProvider','$filterProvider',function ($logProvider,$filterProvider){
+            // $log.debug();
+            // 禁用debug功能
+        $logProvider.debugEnabled(false);
+
+            // 默认9个过滤器，通过配置可以新增一些过滤器
+        $filterProvider.register('capitalize',function(){
+            return function (input,arg){
+                return input[0].toUpperCase() + input.slice(1)
+
+            }
+        })
+
+
+     }])
+     App.controller('DemoController',['$scope','$log', function ($scope,$log){
+            // 测试配置后的结果
+            $log.debug('debug');
+            $scope.str = 'hello angular';
+
+           
+
+}]);
+
+  
+</script>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    <title>AngularJS 自定义服务</title>
+    </head>
+<body ng-app="App">
+    <div ng-controller="DemoController">
+        <!--  -->
+        <h1>{{author}}</h1>
+        <h1>{{num}}</h1>
+    </div>
+    <script type="text/javascript" src="libs/angular.min.js"></script>
+    <script type="text/javascript">
+     var App = angular.module('App',[]);
+
+     App.controller('DemoController',['$scope','author','num', function ($scope,author,num){
+      
+           $scope.author = author;
+           $scope.num = num;
+           
+
+
+     }]);
+
+     //提供了3种方法实现自定义服务
+     //factory、service、value
+     App.value('author','Zjj');
+     App.value('num',10);
+     //本质上一个服务
+     //从表现形式上是一个常量
+     //常量就是不变的值与变对量相对应
+    </script>
+    </body>
+</html>

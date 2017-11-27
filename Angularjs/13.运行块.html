@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="App">
+<head>
+	<meta charset="UTF-8">
+	<title>AngularJS运行块</title>
+</head>
+<body ng-controller="DemoController">
+    <h1>{{name}}</h1>
+    <script type="text/javascript" src="libs/angular.min.js"></script>
+	<script type="text/javascript">
+		var App = angular.module('App',[]);
+
+		//直接运行$http,$rootScope服务
+		//$rootScope根作域
+
+		App.run(['$http','$rootScope',function($http,$rootScope){
+			$http({
+				url:'example1.php',
+				method:'post',
+				headers:{'Content-type':'application/x-www-form-urlencoded'},
+				data:'age=10&sikll=12'
+			}).success(function(data){
+				console.log(data)
+
+
+			});
+			$rootScope.name = "这是我的名字，祖宗";
+			$rootScope.sayHello=function(){
+				alert("你好")
+			}
+
+			$rootScope.sayHello()
+		}])
+		App.controller('DemoController', ['$scope', function ($scope) {
+
+			$scope.sayHello=function(){
+				alert("你好1")
+			}
+			$scope.sayHello()
+			$scope.name = "这是我的名字，后代";
+		}])
+
+	</script>
+</body>
+</html>
