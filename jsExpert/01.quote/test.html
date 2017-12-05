@@ -28,83 +28,26 @@
     </div>
 </div>
 <script type="text/javascript">
-     function Tab(config){
-      this.tabMenu = null;
-      this.tabMain = null;
-      if(config){
-        this._init(config)
-      }
-          if(config.auto){
-          this.autoPlay()
-      }
- 
-     }
-     Tab.prototype = {
-        constructor:Tab,
-        // 初始化工作
-        _init:function(init){
-           var tabMenu = document.getElementById( init.tabMenu);
-           var tabMain = document.getElementById( init.tabMain);
+ document.cookie="userId=828";
+document.cookie="userName=hulk";
+var strCookie=document.cookie;
+console.log(strCookie); //userId=828; userName=hulk
 
-            this.tabMenus = tabMenu.children;
-            this.tabMains = tabMain.children;
+function getdescookie(strcookie,matchcookie){
+    var getMatchCookie;
+    var arrCookie=strcookie.split(";");
+    for(var i=0;i<arrCookie.length;i++){
+         var arr=arrCookie[i].split("=");
+         if(matchcookie == arr[0]){
+                getMatchCookie = arr[1];
+                break;
+         }
+    }
+    return getMatchCookie;
+}
 
-           for (var i = 0; i < this.tabMenus.length; i++) {
-             var li = this.tabMenus[i];
-             li.index = i;
-             
-
-
-
-               //that存储当前对象也就是Tab创建出来的对象
-             var that = this;
-             li.onclick = function(){
-                //that还是指向创建出来的对象
-                //this指的是当前点击事件触发的事件
-              that.change(this)
-             }
-           };
-  
-      
-        },
-       
-        change:function(tabMenu){
-            // 1.让标题变暗
-             for (var i = 0; i < this.tabMenus.length; i++) {
-              this.tabMenus[i].className = "tab-item";
-
-                // 让所有div隐藏
-              this.tabMains[i].style.display = "none";
-
-            };
-            // 让当前li变亮
-            tabMenu.className+=" active";
-            // 让对应的div显示
-            this.tabMains[tabMenu.index].style.display="block";
-        },
-        autoPlay:function(){
-          var index = 0;
-         var that=this;
-       setInterval(function(){
-            index++;
-            if (index==that.tabMenus.length) {
-              index=0
-            };
-            console.log(that.tabMenus[index])
-
-            that.change(that.tabMenus[index])
-       }, 2000);
-     }
-     }
-
-    var tb = new Tab({
-        tabMenu: "tab-menu",    // 指定tab栏菜单id
-        tabMain: "tab-main",    // 指定tab栏内容id
-        auto: true           // 是否自动播放
-    });
-
-
-window[alert(123)]
+var resultCookie = getdescookie(strCookie,'userId');
+console.log(resultCookie); //828
 
 
 </script>

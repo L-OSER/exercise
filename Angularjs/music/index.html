@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+		
+		body {
+			padding: 0;
+			margin: 0;
+		}
+
+		ol {
+			min-height: 400px;
+			padding-top: 0;
+			margin: 0;
+			border: 1px solid #CCC;
+		}
+
+		ol li {
+			line-height: 40px;
+		}
+
+		ol li:hover {
+			background-color: #CCC;
+		}
+		
+		.music {
+			width: 600px;
+			margin: 100px auto;
+		}
+
+		.music nav {
+			height: 40px;
+			background: #000;
+			display: flex;
+		}
+
+		.music nav a {
+			text-align: center;
+			line-height: 40px;
+			color: #FFF;
+			text-decoration: none;
+			flex: 1;
+		}
+		.active{
+			background-color: #ccc
+		}
+	</style>
+</head>
+<body ng-app="Music">
+<div class="music" > 
+	 <nav>
+	 <!-- 后端会说明需要什么样参数 -->
+	 <!-- 需要一个类型ID 1,2,3,4 -->
+	 <!-- 1表示流行 2表示话语 3表示欧美 4表示日韩 -->
+	 	<a ng-class="{active:key=='1'}"  href="#/1">流行</a>
+	 	<a ng-class="{active:key=='2'}"  href="#/2">华语</a>
+	 	<a ng-class="{active:key=='3'}"  href="#/3">欧美</a>
+	 	<a ng-class="{active:key=='4'}"  href="#/4">日韩</a>
+	 </nav>
+	 <ol ng-view>
+		</ol>
+</div>
+	 <script type="text/javascript" src="../libs/angular.min.js"></script>
+	<script type="text/javascript" src="../libs/angular-route.js"></script>
+	<script type="text/javascript">
+        var Music = angular.module('Music',['ngRoute']);
+
+        Music.config(['$routeProvider',function ($routeProvider) {
+        	$routeProvider.when('/:id', {
+        		templateUrl: 'view.html',
+        		controller: 'ViewController'
+        	}).otherwise({
+        	 redirectTo: '/1' 
+        	})
+        }])
+        Music.controller('ViewController', ['$scope','$http','$routeParams', function ($scope,$http,$routeParams) {
+        	//获取地址上参数
+        	var id = $routeParams.id;
+        	$scope.key = id;
+        	console.log($scope.key)
+        	var a =document.querySelectorAll('a');
+        	for (var i=0;i<a.length;i++){
+        	a[i].className='';
+
+        	}
+        	a[id-1].className = 'active';
+        
+
+        	$http({
+        		url:'list.php',
+        		method:'get',
+        		params:{type:id}
+        	}).success(function(info){
+              $scope.lists=info;
+              console.log(info)
+        	});
+        }])
+	</script>
+</body>
+</html>

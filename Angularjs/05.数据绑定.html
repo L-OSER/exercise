@@ -15,6 +15,7 @@
 
     <ul ng-controller="DemoCtrl">
         <li ng-bind="name"></li>
+        <!-- cloak应用加载时防止闪烁 -->
         <li ng-cloak>{{age}}</li>
         <li ng-bind-template="{{age}}{{name}}" ></li>
         <!-- 方法和JQ类似 -->
