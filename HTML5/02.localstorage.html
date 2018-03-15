@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<input type="text" >
+<button>localStorage存储</button>
+<button>localStorage获取</button>
+<button>localStorage更新</button>
+<button>localStorage删除</button>
+<button>localStorage清除</button>
+	<script type="text/javascript">
+
+    /*
+    localStorage
+    数据存在硬盘上
+    永久生效
+    20M
+     */
+    var txt = document.querySelector('input');
+    var btn = document.querySelectorAll('button');
+    //存储数据
+    btn[0].onclick=function(){
+    	window.localStorage.setItem('userName',txt.value)
+    	window.localStorage.setItem('pwd',123)
+    }
+    //获取数据
+    btn[1].onclick=function(){
+    	txt.value =window.localStorage.getItem('userName');
+    }
+    //更新数据
+    btn[2].onclick=function(){
+    	window.localStorage.setItem('userName',txt.value);
+    }
+    //删除数据
+    btn[3].onclick=function(){
+    	window.localStorage.removeItem('userName');
+    }
+    //清除所有数据
+    btn[4].onclick=function(){
+    	window.localStorage.clear();
+    }
+ 
+	</script>
+</body>
+</html>

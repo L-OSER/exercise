@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<input type="text" class="user" >
+<input type="text" class="pwd" >
+<input type="checkbox" class="check">
+<button>登录</button>
+	<script type="text/javascript">
+
+    /*
+    localStorage
+    数据存在硬盘上
+    永久生效
+    20M
+     */
+    var txt = document.querySelector('.user');
+    var pwd = document.querySelector('.pwd');
+    var check = document.querySelector('.check');
+    var btn = document.querySelector('button');
+    //存储数据
+    btn.onclick=function(){
+    	if (check.checked) {
+    	window.localStorage.setItem('userName',txt.value);
+    	window.localStorage.setItem('pwd',pwd.value);
+    	}else{
+    		window.localStorage.removeItem('userName');
+    		window.localStorage.removeItem('pwd');
+    	}
+
+    }
+    window.onload=function(){
+    	txt.value = window.localStorage.getItem('userName');
+    	pwd.value = window.localStorage.getItem('pwd');
+    }
+
+	</script>
+</body>
+</html>

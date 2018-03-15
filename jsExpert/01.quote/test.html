@@ -1,55 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="tab.css">
-    </head>
-    <body>
-    <div class="wrapper" id="wrapper">
-    <ul class="tab" id="tab-menu">
-        <li class="tab-item active">国际大牌<span>◆</span></li>
-        <li class="tab-item">国妆名牌<span>◆</span></li>
-        <li class="tab-item">清洁用品<span>◆</span></li>
-        <li class="tab-item">男士精品<span>◆</span></li>
-    </ul>
-    <div class="products" id="tab-main">
-        <div class="main selected">
-            <a href="###"><img src="imgs/guojidapai.jpg" alt=""/></a>
-        </div>
-        <div class="main">
-            <a href="###"><img src="imgs/guozhuangmingpin.jpg" alt=""/></a>
-        </div>
-        <div class="main">
-            <a href="###"><img src="imgs/qingjieyongpin.jpg" alt=""/></a>
-        </div>
-        <div class="main">
-            <a href="###"><img src="imgs/nanshijingpin.jpg" alt=""/></a>
-        </div>
-    </div>
-</div>
-<script type="text/javascript">
- document.cookie="userId=828";
-document.cookie="userName=hulk";
-var strCookie=document.cookie;
-console.log(strCookie); //userId=828; userName=hulk
+<!DOCTYPE HTML>
+   <head>
+      <script type="text/javascript">
 
-function getdescookie(strcookie,matchcookie){
-    var getMatchCookie;
-    var arrCookie=strcookie.split(";");
-    for(var i=0;i<arrCookie.length;i++){
-         var arr=arrCookie[i].split("=");
-         if(matchcookie == arr[0]){
-                getMatchCookie = arr[1];
-                break;
+         function showLocation(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            alert("Latitude : " + latitude + " Longitude: " + longitude);
          }
-    }
-    return getMatchCookie;
-}
 
-var resultCookie = getdescookie(strCookie,'userId');
-console.log(resultCookie); //828
+         function errorHandler(err) {
+            if(err.code == 1) {
+               alert("Error: Access is denied!");
+            }else if( err.code == 2) {
+               alert("Error: Position is unavailable!");
+            }
+         }
 
+         function getLocation(){
 
-</script>
-    </body>
-</html>
+            if(navigator.geolocation){
+               // timeout at 60000 milliseconds (60 seconds)
+               var options = {timeout:60000};
+               navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
+            }else{
+               alert("Sorry, browser does not support geolocation!");
+            }
+         }
+
+      </script>
+
+   </head>
+
+   <html>
+      <body>
+         <form>
+            <input type="button" onclick="getLocation();" value="Get Location"/>
+         </form>
+      </body>
+   </html>

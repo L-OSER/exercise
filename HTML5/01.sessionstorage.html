@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<input type="text" >
+<button>sessionStorage存储</button>
+<button>sessionStorage获取</button>
+<button>sessionStorage更新</button>
+<button>sessionStorage删除</button>
+<button>sessionStorage清除</button>
+	<script type="text/javascript">
+    var txt = document.querySelector('input');
+    var btn = document.querySelectorAll('button');
+    //存储数据
+    btn[0].onclick=function(){
+    	window.sessionStorage.setItem('userName',txt.value)
+    	window.sessionStorage.setItem('pwd',123)
+    }
+    //获取数据
+    btn[1].onclick=function(){
+    	txt.value =window.sessionStorage.getItem('userName');
+    }
+    //更新数据
+    btn[2].onclick=function(){
+    	window.sessionStorage.setItem('userName',txt.value);
+    }
+    //删除数据
+    btn[3].onclick=function(){
+    	window.sessionStorage.removeItem('userName');
+    }
+    //清除所有数据
+    btn[4].onclick=function(){
+    	window.sessionStorage.clear();
+    }
+	</script>
+</body>
+</html>
